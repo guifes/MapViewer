@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
+import flixel.tile.FlxTilemap;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -17,6 +18,10 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
+		
+		var map:FlxTilemap = new FlxTilemap();
+		
+		map.loadMapFrom2DArray(mapIdexes, "assets/images/world.png", 32, 32);
 	}
 	
 	/**
@@ -31,8 +36,10 @@ class PlayState extends FlxState
 	/**
 	 * Function that is called once every frame.
 	 */
-	override public function update():Void
+	override public function update(elapsed:Float):Void
 	{
-		super.update();
+		super.update(elapsed);
+		
+		trace(elapsed);
 	}	
 }

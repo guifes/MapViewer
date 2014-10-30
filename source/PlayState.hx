@@ -20,8 +20,10 @@ class PlayState extends FlxState
 		super.create();
 		
 		var map:FlxTilemap = new FlxTilemap();
+
+		trace(MapGenerator.diamondSquare(100, 100));
 		
-		map.loadMapFrom2DArray(mapIdexes, "assets/images/world.png", 32, 32);
+		// map.loadMapFrom2DArray(, "assets/images/world.png", 32, 32);
 	}
 	
 	/**
@@ -39,7 +41,5 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		
-		trace(elapsed);
 	}	
 }

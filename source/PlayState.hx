@@ -7,6 +7,7 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.tile.FlxTilemap;
 import flixel.math.FlxPoint;
+import flixel.math.FlxRect;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -38,7 +39,7 @@ class PlayState extends FlxState
 				}
 				else
 				{
-					indexes[i][j] = 1;
+					indexes[i][j] = 24;
 				}
 			}
 		}
@@ -46,6 +47,9 @@ class PlayState extends FlxState
 		map.loadMapFrom2DArray(indexes, "assets/images/world.png", 32, 32);
 		
 		add(map);
+
+		// var bounds:FlxRect = map.getBounds();
+		// FlxG.camera.setScrollBounds(bounds.x, bounds.y, bounds.width, bounds.height);
 	}
 	
 	/**
@@ -61,7 +65,8 @@ class PlayState extends FlxState
 	 * Function that is called once every frame.
 	 */
 	
-// 	private var touchPoint:FlxPoint;
+	private var touchPoint:FlxPoint;
+	private var cameraScroll:FlxPoint;
 	
 	override public function update(elapsed:Float):Void
 	{
@@ -71,6 +76,9 @@ class PlayState extends FlxState
 
 		if (FlxG.mouse.justPressed)
 		{
+			trace("Just pressed");
+
+			cameraScroll = FlxG.camera.scroll;
 			touchPoint = FlxG.mouse.getScreenPosition();
 		}
 			
@@ -78,11 +86,12 @@ class PlayState extends FlxState
 		{
 			var newPoint:FlxPoint = FlxG.mouse.getScreenPosition();
 			
-			trace(newPoint.subtractPoint(touchPoint));
-		}
-		else if(FlxG.mouse.justReleased)
-		{
-			touchPoint = null;
+			var offset:FlxPoint = newPoint.subtractPoint(cameraScroll);
+
+			offset.x = -offset.x;
+			offset.y = -offset.y;
+
+			FlxG.camera.scroll = offset;
 		}
 	}
 }

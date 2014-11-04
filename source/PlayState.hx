@@ -35,12 +35,17 @@ class PlayState extends FlxState
 			{
 				if(heights[i][j] > 0.5)
 				{
-					indexes[i][j] = 2;
+// 					indexes[i][j] = 742;
+				}
+				else if(heights[i][j] < 0)
+				{
+					indexes[i][j] = 400;
 				}
 				else
 				{
 					indexes[i][j] = 24;
 				}
+						
 			}
 		}
 		
@@ -65,33 +70,33 @@ class PlayState extends FlxState
 	 * Function that is called once every frame.
 	 */
 	
-	private var touchPoint:FlxPoint;
-	private var cameraScroll:FlxPoint;
-	
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 
 		// Check Input
-
-		if (FlxG.mouse.justPressed)
-		{
-			trace("Just pressed");
-
-			cameraScroll = FlxG.camera.scroll;
-			touchPoint = FlxG.mouse.getScreenPosition();
-		}
 			
 		if(FlxG.mouse.pressed)
 		{
 			var newPoint:FlxPoint = FlxG.mouse.getScreenPosition();
 			
-			var offset:FlxPoint = newPoint.subtractPoint(cameraScroll);
-
-			offset.x = -offset.x;
-			offset.y = -offset.y;
-
-			FlxG.camera.scroll = offset;
+			if(newPoint.x > (FlxG.width * 0.8))
+			{
+				FlxG.camera.scroll.x += 2;
+			}
+			else if(newPoint.x < FlxG.width * 0.2)
+			{
+				FlxG.camera.scroll.x -= 2;
+			}
+				
+			if(newPoint.y > (FlxG.height * 0.8))
+			{
+				FlxG.camera.scroll.y += 2;
+			}
+			else if(newPoint.y < FlxG.height * 0.2)
+			{
+				FlxG.camera.scroll.y -= 2;
+			}
 		}
 	}
 }

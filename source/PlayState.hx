@@ -21,7 +21,7 @@ class PlayState extends FlxState
 	{
 		super.create();
 		
-		var map:FlxTilemap = new FlxTilemap();
+		var map: FlxTilemap = new FlxTilemap();
 
 		var heights:Array<Array<Float>> = MapGenerator.diamondSquare(100, 100);
 		
@@ -35,11 +35,11 @@ class PlayState extends FlxState
 			{
 				if(heights[i][j] > 0.5)
 				{
-// 					indexes[i][j] = 742;
+					indexes[i][j] = 400;
 				}
 				else if(heights[i][j] < 0)
 				{
-					indexes[i][j] = 400;
+					indexes[i][j] = 731;
 				}
 				else
 				{

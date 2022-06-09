@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="MapViewer" package="com.guifes.mapviewer" version="1.0.0" company="Guifes" />
+	<app main="Main" path="Export" file="MapViewer" />
+	
+	<!-- ____________________________ Window Settings ___________________________ -->
+	
+	<!--These window settings apply to all targets-->
+	<!-- <window width="270" height="540" fps="60" background="#000000" hardware="true" vsync="true" /> -->
+	<window width="1024" height="768" fps="144" background="#000000" hardware="true" vsync="true" />
+	<!-- <window width="600" height="800" fps="60" background="#000000" hardware="true" vsync="true" /> -->
+	<!-- <window width="600" height="1200" fps="60" background="#000000" hardware="true" vsync="true" /> -->
+	<!-- <window width="1080" height="2400" fps="60" background="#000000" hardware="true" vsync="true" /> -->
+
+	<!--Web-specific-->
+	<window if="web" />
+	
+	<!--Desktop-specific-->
+	<window if="desktop" fullscreen="false" resizable="true" />
+	
+	<!--Mobile-specific-->
+	<window if="mobile" orientation="portrait" fullscreen="true" width="0" height="0" />
+
+	<!-- _____________________________ Path Settings ____________________________ -->
+
+	<source path="Source" />
+	<assets path="Assets" rename="assets" />
+	
+	<!-- _______________________________ Libraries ______________________________ -->
+
+	<haxelib name="openfl" />
+	<haxelib name="haxeui-core" />
+	<haxelib name="haxeui-openfl" />
+	<!-- <haxelib name="actuate" /> -->
+	<!-- <haxelib name="castle" /> -->
+	<!-- <haxelib name="tink_core" /> -->
+	<!-- <haxelib name="polygonal-ds" /> -->
+	<!-- <haxelib name="polygonal-core" /> -->
+	<!-- <haxelib name="polygonal-printf" /> -->
+	<!-- <haxelib name="json2object" /> -->
+	<haxelib name="hxcpp-debug-server" />
+
+	<haxelib name="entithax" />
+	<haxelib name="simple" />
+	<haxelib name="haxe-utils" />
+
+	<!-- _______________________________ Haxeflags ______________________________ -->
+
+	<!-- ________________________________ Haxedefs ______________________________ -->
+
+</project>
